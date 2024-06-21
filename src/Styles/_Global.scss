@@ -1,0 +1,84 @@
+@use "./Variables" as *;
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+html {
+  font-size: 48px;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+img {
+  user-select: none;
+  font-size: $textLarge;
+}
+// layout
+body {
+  background: linear-gradient(to bottom, #517ff6, #253663);
+}
+.wrapper {
+  display: grid;
+  grid-template-areas: "nav" "main" "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 10px;
+}
+main {
+  grid-area: "main";
+  border: 1px solid black;
+  box-shadow: 0px 5px 5px 3px rgba(0, 0, 0, 0.219);
+  min-height: 100vh;
+}
+footer {
+  grid-area: "footer";
+}
+nav {
+  grid-area: "nav";
+}
+.page-container {
+  background-color: $lightSecondaryColor;
+  border-radius: 20px;
+  padding: 30px;
+  height: 100%;
+}
+//Typography
+h1 {
+  font-size: $mainHeadings;
+  font-weight: 600;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.568);
+}
+h2,
+.text-large {
+  font-size: $textLarge;
+}
+.text-small {
+  font-size: $textSmall;
+}
+.font-secondary {
+  color: $secondaryColor;
+}
+.nav-icon {
+  font-size: $iconSize;
+}
+// Tables
+table {
+  border-collapse: collapse;
+  // table-layout: fixed;
+  width: 100%;
+}
+table th,
+table td {
+  padding: 10px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

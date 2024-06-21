@@ -1,0 +1,32 @@
+@use "../../../Styles/Variables" as *;
+.text-input {
+  border: 1px solid black;
+  padding: 0px 10px;
+  background-color: transparent;
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.123) inset;
+}
+input,
+textarea,
+select {
+  font-size: $textSmall;
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.637);
+  }
+}
+textarea {
+  max-height: 100px;
+}
+input[type="range"] {
+  accent-color: $primaryColor;
+}
+.range-input {
+  .range-dialogue {
+    transition: 0.1s linear;
+    opacity: 0;
+  }
+  &:hover {
+    .range-dialogue {
+      opacity: 1;
+    }
+  }
+}

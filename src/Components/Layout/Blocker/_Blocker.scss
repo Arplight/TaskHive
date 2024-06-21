@@ -1,0 +1,14 @@
+@use "../../../Styles/Variables" as *;
+.blocker {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  z-index: 100;
+  transition: $transition;
+  background-color: rgba(0, 0, 0, 0.445);
+  backdrop-filter: grayscale(80%) blur(2px);
+  visibility: visible;
+  opacity: 1;
+}

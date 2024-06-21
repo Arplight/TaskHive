@@ -1,0 +1,15 @@
+@use "./Variables" as *;
+.button-primary {
+  background-color: $primaryColor;
+  color: $secondaryColor;
+  border: none;
+}
+.nav-active {
+  color: #ffffff;
+  transform: scale(1.1);
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.356));
+}
+.invisible-blocker {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

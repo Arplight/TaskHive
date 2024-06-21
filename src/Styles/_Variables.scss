@@ -1,0 +1,12 @@
+// Template colors
+$primaryColor: #517ff6;
+$secondaryColor: #ffffff;
+$lightSecondaryColor: #ffffffad;
+$grayColor: #9c9c9c;
+// Template font sizes
+$mainHeadings: clamp(0.7rem, 2.5vw, 1rem);
+$textLarge: clamp(0.4rem, 1.5vw, 0.6rem);
+$textSmall: clamp(0.3rem, 1.2vw, 0.45rem);
+$iconSize: clamp(0.7rem, 2.5vw, 1rem);
+// Template transition
+$transition: all 0.3s ease-in-out;

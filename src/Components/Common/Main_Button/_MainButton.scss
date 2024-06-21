@@ -1,0 +1,26 @@
+@use "../../../Styles/Variables" as *;
+@mixin main-button($isLarge) {
+  background-color: $lightSecondaryColor;
+  text-align: center;
+  border-radius: 20px;
+  padding-block: clamp(3px, 8vw, 6px);
+  font-size: $textLarge;
+  transition: $transition;
+  &:hover {
+    background-color: $primaryColor;
+    color: $secondaryColor;
+  }
+  @if ($isLarge) {
+    padding-inline: clamp(75px, 8vw, 150px);
+  } @else {
+    padding-inline: clamp(35px, 4vw, 73px);
+  }
+}
+
+.main-button {
+  @include main-button(false);
+}
+
+.main-button-large {
+  @include main-button(true);
+}
