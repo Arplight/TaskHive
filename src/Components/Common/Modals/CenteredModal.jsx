@@ -40,7 +40,7 @@ CenteredModalFooter.propTypes = {
 const CenteredModal = ({ children }) => {
   return (
     <section
-      className="bg-[#ffffff] flex flex-col w-full md:w-4/5 lg:w-3/5  m-auto rounded-[30px] shadow-lg shadow-[#00000050]"
+      className="bg-[#ffffff] flex flex-col w-full md:w-4/5 lg:w-3/5  m-auto rounded-[30px] shadow-lg shadow-[#00000050] mx-1.5 md:mx-auto"
       onClick={(e) => e.stopPropagation()}
     >
       {children}

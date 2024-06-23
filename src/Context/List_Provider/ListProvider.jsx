@@ -22,6 +22,24 @@ const ListProvider = ({ children }) => {
       priority: "Medium",
       fulfillment: "Incomplete",
     },
+    {
+      id: 2,
+      title: "Task 3",
+      description: "Consectetur adipiscing elit.",
+      category: "Personal",
+      when: "Next Week",
+      priority: "Medium",
+      fulfillment: "Completed",
+    },
+    {
+      id: 2,
+      title: "Task 4",
+      description: "Consectetur adipiscing elit.",
+      category: "Personal",
+      when: "Next Week",
+      priority: "Medium",
+      fulfillment: "Incomplete",
+    },
   ]);
 
   return (

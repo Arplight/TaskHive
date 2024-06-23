@@ -6,7 +6,7 @@ const Brand = () => {
       <div className="w-[40px] h-[40px]">
         <img src={Logo} alt="logo" className="w-full h-full object-contain" />
       </div>
-      <h1 className="font-secondary">TaskHive</h1>
+      <h1 className="font-secondary">Taskhive</h1>
     </section>
   );
 };

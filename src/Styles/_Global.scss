@@ -36,6 +36,8 @@ main {
   border: 1px solid black;
   box-shadow: 0px 5px 5px 3px rgba(0, 0, 0, 0.219);
   min-height: 100vh;
+  width: 100%;
+  overflow-x: auto;
 }
 footer {
   grid-area: "footer";
@@ -48,6 +50,11 @@ nav {
   border-radius: 20px;
   padding: 30px;
   height: 100%;
+}
+@media only screen and (max-width: "500px") {
+  .page-container {
+    padding: 10px;
+  }
 }
 //Typography
 h1 {
@@ -65,20 +72,59 @@ h2,
 .font-secondary {
   color: $secondaryColor;
 }
+.font-primary {
+  color: $primaryColor;
+}
 .nav-icon {
   font-size: $iconSize;
 }
 // Tables
-table {
+.large-table {
   border-collapse: collapse;
-  // table-layout: fixed;
   width: 100%;
-}
-table th,
-table td {
-  padding: 10px;
-  text-align: center;
-  white-space: nowrap;
+  background-color: $secondaryColor;
+  border-radius: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  th,
+  td {
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  tr {
+    &:nth-last-child(odd) {
+      background-color: #5180f62a;
+    }
+  }
+}
+.small-table {
+  background-color: $secondaryColor;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 10px;
+  table-layout: fixed;
+  overflow: hidden;
+  tr {
+    border-bottom: 1px solid $grayColor;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:nth-last-child(odd) {
+      background-color: #5180f62a;
+    }
+  }
+
+  td {
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-right: 1px solid $grayColor;
+    &:last-child {
+      border-right: none;
+    }
+  }
 }

@@ -9,7 +9,7 @@ import BlockerProvider from "./Context/Blocker_Provider/BlockerProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter basename="/TaskHive">
+    <BrowserRouter basename="/Taskhive">
       <AuthProvider>
         <BlockerProvider>
           <ListProvider>

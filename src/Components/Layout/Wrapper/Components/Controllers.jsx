@@ -6,8 +6,8 @@ const Controllers = () => {
   const { setCurrentBlock } = useContext(BlockerContext);
 
   return (
-    <section className="flex justify-between w-full flex-wrap gap-y-2">
-      <span className="flex">
+    <section className="flex justify-between w-full flex-wrap gap-y-1">
+      <span className="flex w-full md:w-max justify-center">
         <MainButton
           buttonLabel={"Add a new to-do"}
           isLarge={true}
@@ -15,7 +15,7 @@ const Controllers = () => {
           onClick={() => setCurrentBlock("addModal")}
         />
       </span>
-      <span className="flex gap-x-2 items-center w-full md:w-auto justify-center md:justify-start">
+      <span className="flex gap-1 items-center w-full md:w-auto justify-center md:justify-start flex-wrap">
         <MainButton
           buttonLabel={"All"}
           isLarge={false}
