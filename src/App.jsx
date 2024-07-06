@@ -14,6 +14,12 @@ import { AuthContext } from "./Context/Auth_Provider/AuthProvider";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
+  const protectedRoutes = [
+    { component: <Profile />, path: "profile" },
+    { component: <List />, path: "list" },
+    { component: <Error />, path: "*" },
+  ];
+
   return (
     <>
       <Blocker />
@@ -25,12 +31,7 @@ function App() {
               path="auth"
               element={isAuthenticated ? <Navigate to="/list" /> : <Auth />}
             />
-            {/* Protected routes */}
-            {[
-              { component: <Profile />, path: "profile" },
-              { component: <List />, path: "list" },
-              { component: <Error />, path: "*" },
-            ].map((route, index) => (
+            {protectedRoutes.map((route, index) => (
               <Route
                 key={index}
                 path={route.path}

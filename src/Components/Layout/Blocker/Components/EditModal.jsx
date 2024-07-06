@@ -76,17 +76,17 @@ const EditModal = () => {
       </CenteredModal.CenteredModalBody>
       <CenteredModal.CenteredModalFooter withStyle={"flex justify-between"}>
         <MainButton
+          buttonLabel={"Save"}
+          isPrimary={true}
+          isLarge={false}
+          onClick={""}
+        />
+        <MainButton
           buttonLabel={"Cancel"}
           withBorder={true}
           isPrimary={false}
           isLarge={false}
           onClick={() => setCurrentBlock(null)}
-        />
-        <MainButton
-          buttonLabel={"Save"}
-          isPrimary={true}
-          isLarge={false}
-          onClick={""}
         />
       </CenteredModal.CenteredModalFooter>
     </CenteredModal>

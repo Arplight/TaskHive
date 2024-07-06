@@ -3,7 +3,7 @@
   border: 1px solid #0000006b;
   padding: 0px 10px;
   background-color: transparent;
-  box-shadow: 0px 0px 3px 3px #00000025 inset;
+  box-shadow: 0px 0px 2px 2px #0000002d inset;
   border-radius: 5px;
 }
 input,
@@ -30,4 +30,8 @@ input[type="range"] {
       opacity: 1;
     }
   }
+}
+.error-message {
+  color: red;
+  font-size: 0.3rem;
 }
