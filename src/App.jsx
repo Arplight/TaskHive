@@ -11,7 +11,8 @@ import Navbar from "./Components/Layout/Navbar/Navbar";
 import ProtectedRoute from "./Components/Pages/Protected_Route/ProtectedRoute";
 import { useContext } from "react";
 import { AuthContext } from "./Context/Auth_Provider/AuthProvider";
-
+import { Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
   const protectedRoutes = [
@@ -22,6 +23,20 @@ function App() {
 
   return (
     <>
+      {/* React toastify */}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Slide}
+      />
       <Blocker />
       <div className="wrapper container m-auto">
         {isAuthenticated && <Navbar />}

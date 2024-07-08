@@ -19,7 +19,7 @@ const Auth = () => {
           </button>
         ))}
       </div>
-      <div>{currentForm === "Sign-In" ? <SignIn /> : <SignUp />}</div>
+      <div>{currentForm === "Sign-In" ? <SignIn /> : <SignUp setCurrentForm = {setCurrentForm}/>}</div>
     </div>
   );
 };

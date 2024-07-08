@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { PuffLoader } from "react-spinners";
 
 const MainButton = ({
   buttonLabel,
@@ -10,6 +11,7 @@ const MainButton = ({
   buttonStyle,
   buttonIcon,
   buttonRole = undefined,
+  isLoading = false,
 }) => {
   const buttonClasses = `
     ${isLarge ? "main-button-large" : "main-button"}
@@ -17,6 +19,7 @@ const MainButton = ({
     ${withBorder ? "border-[#000000] border-[1px]" : ""}
     ${buttonIcon ? "flex gap-1 items-center justify-center" : ""}
     ${buttonStyle}
+    ${isDisabled && "button-disabled"}
   `;
 
   return (
@@ -33,7 +36,7 @@ const MainButton = ({
           className="w-[30px] md:w-[40px]"
         />
       )}
-      {buttonLabel}
+      {isLoading ? <PuffLoader color="#ffffff" size={30} cssOverride={{margin:"auto"}} /> : buttonLabel}
     </button>
   );
 };
@@ -48,6 +51,7 @@ MainButton.propTypes = {
   buttonStyle: PropTypes.string,
   buttonIcon: PropTypes.string,
   buttonRole: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 export default MainButton;

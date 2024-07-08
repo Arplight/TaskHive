@@ -1,15 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { FaListCheck } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
-import { AuthContext } from "../../../Context/Auth_Provider/AuthProvider";
+import { LogOutHandler } from "../../../Context/Auth_Provider/AuthHandler";
 
 const Navbar = () => {
   // Reading state
   const [currentActive, setCurrentActive] = useState("");
   const currentLocation = useLocation().pathname.replace("/", "");
-  const { setIsAuthenticated } = useContext(AuthContext);
   // State updater
   useEffect(() => {
     setCurrentActive(currentLocation);
@@ -41,10 +40,7 @@ const Navbar = () => {
             {path ? (
               <Link to={path}>{icon}</Link>
             ) : (
-              <button
-                className="flex"
-                onClick={() => setIsAuthenticated(false)}
-              >
+              <button className="flex" onClick={() => LogOutHandler()}>
                 {icon}
               </button>
             )}
