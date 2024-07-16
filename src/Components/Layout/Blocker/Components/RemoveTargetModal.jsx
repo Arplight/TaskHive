@@ -1,23 +1,24 @@
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
+import { BlockerContext } from "../../../../Context/Blocker_Provider/BlockerProvider";
 import CenteredModal from "../../../Common/Modals/CenteredModal";
 import MainButton from "../../../Common/Main_Button/MainButton";
-import { BlockerContext } from "../../../../Context/Blocker_Provider/BlockerProvider";
-import { ListContext } from "../../../../Context/List_Provider/ListProvider";
-import { removeTask } from "../../../../Context/List_Provider/ListHandler";
-import { toast } from "react-toastify";
+import { removeTarget } from "../../../../Context/Profile_Provider/ProfileHandler";
+import { ProfileContext } from "../../../../Context/Profile_Provider/ProfileProvider";
 
-const DeleteModal = () => {
+const RemoveTargetModal = () => {
   const { setCurrentBlock } = useContext(BlockerContext);
-  const { currentTodo, fetchTasks } = useContext(ListContext);
+  const { currentTarget, fetchTarget } = useContext(ProfileContext);
+
   const [isLoading, setIsLoading] = useState(false);
   function removeHandler() {
     setIsLoading(true);
-    removeTask(currentTodo.id)
+    removeTarget(currentTarget.id)
       .then((response) => {
         if (response) {
           setCurrentBlock(null);
-          toast.success("Task deleted successfully");
-          fetchTasks();
+          toast.success("Target deleted successfully");
+          fetchTarget();
         }
       })
       .finally(() => {
@@ -27,11 +28,11 @@ const DeleteModal = () => {
   return (
     <CenteredModal>
       <CenteredModal.CenteredModalHeader>
-        <h2>{currentTodo.name}</h2>
+        <h2>{currentTarget?.name}</h2>
       </CenteredModal.CenteredModalHeader>
       <CenteredModal.CenteredModalBody>
         <p className="text-large">
-          Are you sure you want to delete this to-do?
+          Are you sure you want to delete this target?
         </p>
       </CenteredModal.CenteredModalBody>
       <CenteredModal.CenteredModalFooter withStyle={"flex justify-between"}>
@@ -53,4 +54,5 @@ const DeleteModal = () => {
     </CenteredModal>
   );
 };
-export default DeleteModal;
+
+export default RemoveTargetModal;

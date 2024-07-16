@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import MainButton from "../../../Common/Main_Button/MainButton";
 import { BlockerContext } from "../../../../Context/Blocker_Provider/BlockerProvider";
+import { ListContext } from "../../../../Context/List_Provider/ListProvider";
 
 const Controllers = () => {
   const { setCurrentBlock } = useContext(BlockerContext);
-
+  const { setCurrentFilter, currentFilter } = useContext(ListContext);
   return (
     <section className="flex justify-between w-full flex-wrap gap-y-1">
       <span className="flex w-full md:w-max justify-center">
@@ -16,24 +17,15 @@ const Controllers = () => {
         />
       </span>
       <span className="flex gap-1 items-center w-full md:w-auto justify-center md:justify-start flex-wrap">
-        <MainButton
-          buttonLabel={"All"}
-          isLarge={false}
-          isPrimary={true}
-          onClick={""}
-        />
-        <MainButton
-          buttonLabel={"To-do"}
-          isLarge={false}
-          isPrimary={false}
-          onClick={""}
-        />
-        <MainButton
-          buttonLabel={"Completed"}
-          isLarge={false}
-          isPrimary={false}
-          onClick={""}
-        />
+        {["All", "To-Do", "Completed"].map((button, index) => (
+          <MainButton
+            key={index}
+            buttonLabel={button}
+            isLarge={false}
+            isPrimary={currentFilter === button}
+            onClick={() => setCurrentFilter(button)}
+          />
+        ))}
       </span>
     </section>
   );

@@ -44,7 +44,7 @@ function App() {
           <Route path="/" element={<Wrapper />}>
             <Route
               path="auth"
-              element={isAuthenticated ? <Navigate to="/list" /> : <Auth />}
+              element={isAuthenticated ? <Navigate to="/profile" /> : <Auth />}
             />
             {protectedRoutes.map((route, index) => (
               <Route

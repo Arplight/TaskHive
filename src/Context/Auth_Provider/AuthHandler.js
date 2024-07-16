@@ -35,8 +35,8 @@ export const SignUpHandler = async ({
 export const SignInHandler = async ({ email, password }) => {
   try {
     const response = await signInWithEmailAndPassword(auth, email, password);
-    const token = response.user?.accessToken;
-    Cookies.set("accessToken", token);
+    const user = response?.user;
+    Cookies.set("userData", JSON.stringify(user));
     return response;
   } catch (error) {
     toast.error(error.message);
@@ -47,8 +47,8 @@ export const SignInHandler = async ({ email, password }) => {
 export const GoogleSignIn = async () => {
   try {
     const response = await signInWithPopup(auth, googleProvider);
-    const token = response.user?.accessToken;
-    Cookies.set("accessToken", token);
+    const user = response?.user;
+    Cookies.set("userData", JSON.stringify(user));
     return response;
   } catch (error) {
     toast.error(error.message);
@@ -57,6 +57,6 @@ export const GoogleSignIn = async () => {
 };
 
 export const LogOutHandler = () => {
-  Cookies.remove("accessToken");
+  Cookies.remove("userData");
   window.location.reload();
 };

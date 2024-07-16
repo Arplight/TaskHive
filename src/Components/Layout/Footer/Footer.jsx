@@ -3,8 +3,8 @@ const Footer = () => {
     <footer className="px-1 pb-2 mt-3 text-center">
       <p className="text-small font-secondary">
         <a
-          href="https://arplight.github.io/Portfolio/"
-          className="mr-0.5"
+          href="https://portfolio-arp.netlify.app"
+          className="mr-0.5 font-primary underline"
           target="_blank"
           rel="noreferrer"
         >

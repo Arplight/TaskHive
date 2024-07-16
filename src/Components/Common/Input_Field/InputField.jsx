@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Field, ErrorMessage } from "formik";
 
 const InputField = ({
   fieldType,
@@ -9,46 +10,61 @@ const InputField = ({
   fieldStyle,
   fieldMaxLength,
   fieldOptions,
+  onChange,
 }) => {
   let currentField;
 
   switch (fieldType) {
     case "input":
       currentField = (
-        <input
+        <Field
           type={inputType}
           name={fieldName}
           id={fieldName}
           maxLength={inputType === "text" ? fieldMaxLength : undefined}
           placeholder={inputType === "text" ? fieldPlaceholder : undefined}
-          className={`text-input ${fieldStyle}`}
+          className={`text-input w-full`}
         />
       );
       break;
     case "textarea":
       currentField = (
-        <textarea
+        <Field
+          as="textarea"
           name={fieldName}
           id={fieldName}
           placeholder={fieldPlaceholder}
-          className={`text-input ${fieldStyle}`}
+          className={`text-input w-full`}
           maxLength={fieldMaxLength}
         />
       );
       break;
     case "select":
       currentField = (
-        <select
+        <Field
+          as="select"
           name={fieldName}
           id={fieldName}
-          className={`text-input ${fieldStyle}`}
+          className={`text-input w-full`}
         >
           {fieldOptions.map((option, index) => (
             <option value={option} key={index}>
               {option}
             </option>
           ))}
-        </select>
+        </Field>
+      );
+      break;
+    case "file":
+      currentField = (
+        <input
+          type={"file"}
+          name={fieldName}
+          id={fieldName}
+          accept={"image/jpeg, image/jpg, image/png"}
+          onChange={onChange}
+          className={`w-full`}
+        />
       );
       break;
     default:
@@ -60,7 +76,14 @@ const InputField = ({
       <label htmlFor={fieldName} className="text-large">
         {fieldLabel}:
       </label>
-      {currentField}
+      <span className={`flex ${fieldStyle} relative`}>
+        {currentField}
+        <ErrorMessage
+          name={fieldName}
+          component="div"
+          className="error-message absolute  bottom-[-18px]"
+        />
+      </span>
     </fieldset>
   );
 };
@@ -74,6 +97,7 @@ InputField.propTypes = {
   fieldStyle: PropTypes.string,
   fieldMaxLength: PropTypes.number,
   fieldOptions: PropTypes.arrayOf(PropTypes.string),
+  onChange: PropTypes.func,
 };
 
 export default InputField;

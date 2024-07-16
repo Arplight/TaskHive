@@ -1,10 +1,10 @@
 import Edit from "/Icons/edit.svg";
 import Delete from "/Icons/trash.svg";
 import PropTypes from "prop-types";
-import Completed from "/Icons/completed.svg";
-import Incomplete from "/Icons/incomplete.svg";
+// import Completed from "/Icons/completed.svg";
+// import Incomplete from "/Icons/incomplete.svg";
 
-const SmallTable = ({ toDoData, setCurrentBlock }) => {
+const SmallTable = ({ toDoData, editHandler, deleteHandler }) => {
   return (
     toDoData &&
     toDoData.map((item) => (
@@ -13,8 +13,8 @@ const SmallTable = ({ toDoData, setCurrentBlock }) => {
         key={item.id}
       >
         <caption className="text-large font-primary font-bold	 italic mb-0.5">
-          <div className="w-[26px] h-[26px] bg-[#ffffff] shadow-[#00000040] shadow-md p-[4px] rounded-sm cursor-pointer mb-0.5">
-            {item.fulfillment === "Completed" ? (
+          {/* <div className="w-[26px] h-[26px] bg-[#ffffff] shadow-[#00000040] shadow-md p-[4px] rounded-sm cursor-pointer mb-0.5">
+            {item.fulfillment === 100 ? (
               <img
                 src={Incomplete}
                 alt="incomplete"
@@ -29,8 +29,8 @@ const SmallTable = ({ toDoData, setCurrentBlock }) => {
                 title={"Mark as completed"}
               />
             )}
-          </div>
-          {item.title}
+          </div> */}
+          {item.name}
         </caption>
         <tbody>
           {/* List items */}
@@ -56,7 +56,7 @@ const SmallTable = ({ toDoData, setCurrentBlock }) => {
               When
             </td>
             <td className="text-small" title={item.when}>
-              {item.when}
+              {item.date?.split("-").join("/")} : {item.time}
             </td>
           </tr>
           <tr key={`${item.id}-priority`}>
@@ -72,7 +72,7 @@ const SmallTable = ({ toDoData, setCurrentBlock }) => {
               Fulfillment
             </td>
             <td className="text-small" title={item.fulfillment}>
-              {item.fulfillment}
+              {item.fulfillment === 100 ? "completed" : "incomplete"}
             </td>
           </tr>
           <tr key={`${item.id}-actions`}>
@@ -80,10 +80,10 @@ const SmallTable = ({ toDoData, setCurrentBlock }) => {
               Actions
             </td>
             <td className="flex gap-2 items-center" title={item.fulfillment}>
-              <div onClick={() => setCurrentBlock("editModal")}>
+              <div onClick={() => editHandler(item)}>
                 <img src={Edit} alt="edit-task" />
               </div>
-              <div onClick={() => setCurrentBlock("deleteModal")}>
+              <div onClick={() => deleteHandler(item)}>
                 <img src={Delete} alt="remove-task" />
               </div>
             </td>
