@@ -1,3 +1,4 @@
+import React from "react";
 import Edit from "/Icons/edit.svg";
 import Delete from "/Icons/trash.svg";
 import PropTypes from "prop-types";
@@ -11,6 +12,7 @@ const SmallTable = ({ toDoData, editHandler, deleteHandler }) => {
       <table
         className="md:hidden small-table shadow-[#00000030] shadow-lg"
         key={item.id}
+        data-testid="small-table"
       >
         <caption className="text-large font-primary font-bold	 italic mb-0.5">
           {/* <div className="w-[26px] h-[26px] bg-[#ffffff] shadow-[#00000040] shadow-md p-[4px] rounded-sm cursor-pointer mb-0.5">
@@ -80,11 +82,15 @@ const SmallTable = ({ toDoData, editHandler, deleteHandler }) => {
               Actions
             </td>
             <td className="flex gap-2 items-center" title={item.fulfillment}>
-              <div onClick={() => editHandler(item)}>
+              <div onClick={() => editHandler(item)} data-testid="edit-table">
                 <img src={Edit} alt="edit-task" />
               </div>
               <div onClick={() => deleteHandler(item)}>
-                <img src={Delete} alt="remove-task" />
+                <img
+                  src={Delete}
+                  alt="remove-task"
+                  data-testid="delete-table"
+                />
               </div>
             </td>
           </tr>

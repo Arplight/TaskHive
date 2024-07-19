@@ -25,14 +25,16 @@ const Wrapper = () => {
         !isAuthenticated && "mt-4"
       }`}
     >
-      <div className={`m-auto ${isLoading && isAuthenticated ? "visible" : "invisible absolute"}`}>
-        <RingLoader size={120} color="#ffffff" />
+      <div
+        className={`m-auto ${
+          isLoading && isAuthenticated ? "block" : "hidden"
+        }`}
+      >
+        <RingLoader size={window.innerWidth > 992 ? 120 : 90} color="#ffffff" />
       </div>
       <div
-        className={`flex flex-col items-center gap-2 w-full h-full duration-300 ${
-          isLoading && isAuthenticated
-            ? "invisible absolute w-[0px] h-[0px] opacity-0 "
-            : "visible opacity-100 "
+        className={`flex-col items-center gap-2 duration-700 ${
+          isLoading && isAuthenticated ? "hidden" : "flex w-full h-full"
         }`}
       >
         <Brand />

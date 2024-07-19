@@ -6,9 +6,9 @@ export const ListContext = createContext();
 const ListProvider = ({ children }) => {
   const [currentFilter, setCurrentFilter] = useState("All");
   const [currentTodo, setCurrentTodo] = useState({});
-  const [allTasks, setAllTasks] = useState([]); //All tasks refrence
+  const [allTasks, setAllTasks] = useState([]);
   const [todoData, setTodoData] = useState([]);
-
+  const [isFulFilled, setIsFulFilled] = useState(false);
   useEffect(() => {
     switch (currentFilter) {
       case "Completed":
@@ -28,6 +28,7 @@ const ListProvider = ({ children }) => {
       const tasksData = await getTasks();
       setAllTasks(tasksData);
       setTodoData(tasksData);
+      setIsFulFilled(true);
     } catch (error) {
       console.error(error);
     }
@@ -42,6 +43,7 @@ const ListProvider = ({ children }) => {
         fetchTasks,
         currentTodo,
         setCurrentTodo,
+        isFulFilled,
       }}
     >
       {children}

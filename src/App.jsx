@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import Template from "./Template";
+// import Template from "./Template";
 import Profile from "./Components/Pages/Profile/Profile";
 import Auth from "./Components/Pages/Auth/Auth";
 import List from "./Components/Pages/List/List";

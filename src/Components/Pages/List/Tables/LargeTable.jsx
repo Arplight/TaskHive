@@ -1,3 +1,4 @@
+import React from "react";
 import Edit from "/Icons/edit.svg";
 import Delete from "/Icons/trash.svg";
 import PropTypes from "prop-types";
@@ -6,7 +7,7 @@ import PropTypes from "prop-types";
 
 const LargeTable = ({ toDoData, editHandler, deleteHandler }) => {
   return (
-    <table className="hidden md:table large-table">
+    <table className="hidden md:table large-table" data-testid="large-table">
       <thead className="border-b border-[#517ff660]">
         <tr>
           {[
@@ -71,12 +72,14 @@ const LargeTable = ({ toDoData, editHandler, deleteHandler }) => {
                 <div
                   onClick={() => editHandler(item)}
                   className="cursor-pointer"
+                  data-testid="edit-table"
                 >
                   <img src={Edit} alt="edit-task" />
                 </div>
                 <div
                   className="cursor-pointer"
                   onClick={() => deleteHandler(item)}
+                  data-testid="delete-row"
                 >
                   <img src={Delete} alt="remove-task" />
                 </div>

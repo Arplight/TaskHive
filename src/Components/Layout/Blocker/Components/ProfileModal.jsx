@@ -14,7 +14,7 @@ import { ProfileContext } from "../../../../Context/Profile_Provider/ProfileProv
 const ProfileModal = () => {
   // Reading state
   const { setCurrentBlock } = useContext(BlockerContext);
-  const { fetchProfile, fetchProfileImage } = useContext(ProfileContext);
+  const { fetchProfession, fetchProfileImage } = useContext(ProfileContext);
   const [isLoading, setIsLoading] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
   const formikRef = useRef(null);
@@ -72,7 +72,7 @@ const ProfileModal = () => {
                   if (response) {
                     resetForm();
                     toast.success("Profession updated successfully");
-                    fetchProfile();
+                    fetchProfession();
                   }
                 })
                 .finally(() => {

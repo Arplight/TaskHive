@@ -3,31 +3,33 @@ import { BiTargetLock } from "react-icons/bi";
 import { IoAdd } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import ProfilePic from "/Icons/Profile.svg";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { ProfileContext } from "../../../Context/Profile_Provider/ProfileProvider";
 import { BlockerContext } from "../../../Context/Blocker_Provider/BlockerProvider";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { TiDelete } from "react-icons/ti";
-
 import Cookies from "js-cookie";
+
 import { LoadingContext } from "../../../Context/Loading_Provider/LoadingProvider";
 const Profile = () => {
   // Loading state
   const { setIsLoading } = useContext(LoadingContext);
+
   // Reading state
   const {
     professionData,
     targetData,
     profileImage,
     setCurrentTarget,
-    fetchProfile,
+    fetchProfession,
     fetchTarget,
     fetchProfileImage,
+    isFulFilled,
   } = useContext(ProfileContext);
   const { setCurrentBlock } = useContext(BlockerContext);
   // Fetching data
   useEffect(() => {
-    fetchProfile();
+    fetchProfession();
     fetchTarget();
     fetchProfileImage();
   }, []);
@@ -39,20 +41,26 @@ const Profile = () => {
     setCurrentBlock("removeTargetModal");
     setCurrentTarget(target);
   }
+  // Loading handler
   useEffect(() => {
-    if (professionData && targetData && profileImage) {
+    if (isFulFilled) {
       setIsLoading(false);
     } else {
       setIsLoading(true);
     }
-  }, [professionData, profileImage, targetData]);
+  }, [isFulFilled]);
   return (
     <div className="page-container w-full lg:w-1/2 mx-auto relative">
       <button
         className="absolute top-[10px] right-[10px]"
+        data-testid="edit-button"
         onClick={() => profileEditHandler("profileModal")}
       >
-        <FaRegEdit className="text-[#517ff6]" size={26} />
+        <FaRegEdit
+          className="text-[#517ff6]"
+          size={26}
+          data-testid="edit-icon"
+        />
       </button>
 
       <div className="bg-[#517ff6] h-[180px] w-[180px] lg:h-[200px] lg:w-[200px] rounded-full border-4 border-white mx-auto shadow-lg shadow-black/30 overflow-hidden mt-1 relative">
@@ -92,15 +100,19 @@ const Profile = () => {
               >
                 <BiTargetLock className="text-[22px] font-primary" />
                 <p className="text-small font-primary italic">{target.name}</p>
-                <IoIosRemoveCircleOutline
-                  className="text-[18px] font-primary ml-auto cursor-pointer"
+                <button
+                  className="text-[18px] font-primary ml-auto"
                   onClick={() => targetRemoveHandler(target)}
-                />
+                  data-testid="remove-target"
+                >
+                  <IoIosRemoveCircleOutline />
+                </button>
               </li>
             ))}
           <button
             className="p-0.5 w-full bg-[#ffffff]/70 rounded-full font-primary text-large border border-[#517ff6] flex items-center justify-center gap-0.5 mt-2"
             onClick={() => profileEditHandler("targetModal")}
+            data-testid="add-target"
           >
             <IoAdd />
             Add new target

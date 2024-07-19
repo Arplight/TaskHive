@@ -4,12 +4,15 @@ import SmallTable from "./Tables/SmallTable";
 import LargeTable from "./Tables/LargeTable";
 import { ListContext } from "../../../Context/List_Provider/ListProvider";
 import NoTasks from "/Icons/no-task.png";
+import { LoadingContext } from "../../../Context/Loading_Provider/LoadingProvider";
 
 const List = () => {
   // Reading state
   const { setCurrentBlock } = useContext(BlockerContext);
-  const { todoData, fetchTasks, setCurrentTodo } = useContext(ListContext);
-
+  const { setIsLoading } = useContext(LoadingContext);
+  const { todoData, fetchTasks, setCurrentTodo, isFulFilled } =
+    useContext(ListContext);
+  // Fetching
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -23,21 +26,27 @@ const List = () => {
     setCurrentBlock("editModal");
     setCurrentTodo(item);
   };
+  // Loading Handler
+  useEffect(() => {
+    if (isFulFilled) {
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+    }
+  }, [todoData]);
   return (
     <div className="page-container w-full overflow-x-scroll">
-      {todoData.length > 0 ? (
+      {todoData && todoData.length > 0 ? (
         <>
           {/* large table */}
           <LargeTable
             toDoData={todoData}
-            setCurrentBlock={setCurrentBlock}
             deleteHandler={deleteHandler}
             editHandler={editHandler}
           />
           {/* small table */}
           <SmallTable
             toDoData={todoData}
-            setCurrentBlock={setCurrentBlock}
             deleteHandler={deleteHandler}
             editHandler={editHandler}
           />
