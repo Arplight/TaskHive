@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Controllers from "./Components/Controllers";
 import Brand from "./Components/Brand";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../../Context/Auth_Provider/AuthProvider";
 import { LoadingContext } from "../../../Context/Loading_Provider/LoadingProvider";
 import { RingLoader } from "react-spinners";

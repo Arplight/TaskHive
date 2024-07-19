@@ -14,7 +14,6 @@ import { LoadingContext } from "../../../Context/Loading_Provider/LoadingProvide
 const Profile = () => {
   // Loading state
   const { setIsLoading } = useContext(LoadingContext);
-
   // Reading state
   const {
     professionData,

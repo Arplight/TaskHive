@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import React from "react";
 import { PuffLoader } from "react-spinners";
 
 const MainButton = ({
@@ -12,6 +13,7 @@ const MainButton = ({
   buttonIcon,
   buttonRole = undefined,
   isLoading = false,
+  testId
 }) => {
   const buttonClasses = `
     ${isLarge ? "main-button-large" : "main-button"}
@@ -28,6 +30,7 @@ const MainButton = ({
       onClick={onClick}
       disabled={isDisabled}
       type={buttonRole}
+      data-testid={testId}
     >
       {buttonIcon && (
         <img
@@ -36,7 +39,15 @@ const MainButton = ({
           className="w-[30px] md:w-[40px]"
         />
       )}
-      {isLoading ? <PuffLoader color="#ffffff" size={30} cssOverride={{margin:"auto"}} /> : buttonLabel}
+      {isLoading ? (
+        <PuffLoader
+          color="#ffffff"
+          size={30}
+          cssOverride={{ margin: "auto" }}
+        />
+      ) : (
+        buttonLabel
+      )}
     </button>
   );
 };
@@ -52,6 +63,7 @@ MainButton.propTypes = {
   buttonIcon: PropTypes.string,
   buttonRole: PropTypes.string,
   isLoading: PropTypes.bool,
+  testId: PropTypes.string
 };
 
 export default MainButton;

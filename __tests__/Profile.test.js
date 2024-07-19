@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { LoadingContext } from "../src/Context/Loading_Provider/LoadingProvider";
 import { ProfileContext } from "../src/Context/Profile_Provider/ProfileProvider";
@@ -14,7 +14,7 @@ const mockFetchProfession = jest.fn();
 const mockFetchTarget = jest.fn();
 const mockFetchProfileImage = jest.fn();
 const mockSetCurrentBlock = jest.fn();
-const mockSetCurrentTarget = jest.fn(); // Added for targetRemoveHandler
+const mockSetCurrentTarget = jest.fn();
 const mockLoadingContextValue = {
   setIsLoading: mockSetIsLoading,
 };
@@ -46,6 +46,7 @@ describe("Profile Component", () => {
       </LoadingContext.Provider>
     );
   });
+  afterEach(cleanup);
 
   describe("Initial Rendering", () => {
     it("should display necessary text and elements", () => {

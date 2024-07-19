@@ -20,7 +20,6 @@ function App() {
     { component: <List />, path: "list" },
     { component: <Error />, path: "*" },
   ];
-
   return (
     <>
       {/* React toastify */}
