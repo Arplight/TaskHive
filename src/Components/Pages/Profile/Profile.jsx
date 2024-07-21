@@ -85,7 +85,7 @@ const Profile = () => {
         <h3 className="font-primary text-hero italic tracking-wider leading-[40px] mt-0.5">
           {professionData && professionData}
         </h3>
-        <div className="flex gap-1 items-center justify-center mt-2">
+        <div className="flex gap-0.5 items-center justify-center mt-2">
           <TbTargetArrow className="text-[28px]" />
           <h2>Targets</h2>
         </div>
